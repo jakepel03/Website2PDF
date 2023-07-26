@@ -1,0 +1,89 @@
+html {
+    box-sizing: border-box;
+}
+
+body, html {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: 'Handjet', cursive;
+    font-size: 13px;
+}
+
+h1, h2 {
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 1em;
+}
+
+p {
+    margin-bottom: 5px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.main-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    background: rgba(234, 233, 233, 0.95);
+}
+
+.content {
+    width: 80%;
+    height: 85%;
+    margin: auto;
+    padding: 10px 0;
+    border: 2px solid #000000;
+    background: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content-container {
+     width: 80%;
+ }
+
+.header-container {
+    text-align: center;
+}
+
+.url-main-container {
+    height: 100%;
+}
+
+.url-list {
+    display: flex;
+}
+
+.url-element {
+    padding-bottom: 4px;
+}
+
+.extract-pdfs-button-container, .merge-button-container {
+    padding: 5px;
+    text-align: center;
+}
+
+
+
+@media screen and (min-width: 480px) {
+    body {
+        font-size: 20px;
+    }
+}
+
