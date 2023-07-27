@@ -39,11 +39,21 @@ To get started with the PDF Extraction website, follow these steps:
 5. Merge PDFs (Optional):
    - If desired, users can select multiple PDFs from the list and click on the "Merge PDFs and download" button.
    - The server will combine the selected PDFs into a single merged PDF for easy downloading.
+  
+6. Deleting PDFs (Optional):
+   -If desired, user can delete PDFs from server manually (server will also delete old PDF files automatically)
 
 ## Technologies Used
 - Frontend: HTML, CSS, JavaScript
 - Backend: Node.js, Express.js
 - PDF Conversion: Puppeteer
+
+## Goals
+- Enable downloading PDF files from server
+- Enable auto and (manual) deleting pdf files from server
+- Improve layout, fix visual problems
+
+NOTE: Implementation of functionalities is still in progress, so there might be some issues using the website at the moment.
 
 
 
