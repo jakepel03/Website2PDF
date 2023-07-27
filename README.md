@@ -41,7 +41,7 @@ To get started with the PDF Extraction website, follow these steps:
    - The server will combine the selected PDFs into a single merged PDF for easy downloading.
   
 6. Deleting PDFs (Optional):
-   -If desired, user can delete PDFs from server manually (server will also delete old PDF files automatically)
+   - If desired, user can delete PDFs from server manually (server will also delete old PDF files automatically).
 
 ## Technologies Used
 - Frontend: HTML, CSS, JavaScript
