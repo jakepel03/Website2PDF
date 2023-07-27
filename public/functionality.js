@@ -10,19 +10,20 @@ function addUrlBox() {
         "                    </div>"
 }
 
-function convertToPDF() {
-
+async function convertToPDF() {
     let PDFcounter = 1;
     const allUrls = document.querySelectorAll('.url-element');
-    allUrls.forEach(async function (singleUrl) {
+
+    for (const singleUrl of allUrls) {
         const url = singleUrl.querySelector('.url-textbox').value.trim();
+
         try {
             const response = await fetch('/convertToPDF', {
                 method: 'POST',
                 headers: {
                     'Content-type': 'application/json'
                 },
-                body: JSON.stringify({ url })
+                body: JSON.stringify({ url, PDFcounter })
             });
             if (response.ok) {
                 console.log("Uploading URL " + PDFcounter +  " to server successful");
@@ -33,7 +34,7 @@ function convertToPDF() {
         } catch (error) {
             alert('Error connecting to server:' + error);
         }
-    })
+    }
 }
 document.addEventListener('DOMContentLoaded', function () {
     addUrlButton.addEventListener("click", addUrlBox);

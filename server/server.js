@@ -5,9 +5,10 @@ const server = express();
 server.use(express.static("../public"));
 server.use(express.json());
 
-let numOfPDFs = 1;
 
-async function createPDF(url) {
+
+async function createPDF(url, PDFNumber) {
+    console.log(PDFNumber);
     try {
         const browser = await puppeteer.launch({ headless: "new" });
         const page = await browser.newPage();
@@ -15,7 +16,7 @@ async function createPDF(url) {
         await page.emulateMediaType('screen');
 
         const pdf = await page.pdf({
-            path: 'pdfs/file' + numOfPDFs + '.pdf',
+            path: `pdfs/file${PDFNumber}.pdf`,
             printBackground: true,
             format: 'A4',
             margin: { top: '100px', right: '50px', bottom: '100px', left: '50px' }
@@ -28,8 +29,9 @@ async function createPDF(url) {
 
 server.post("/convertToPDF", async (request, response) => {
     const url = request.body.url;
+    const PDFNumber = request.body.PDFcounter;
     try {
-        await createPDF(url);
+        await createPDF(url, PDFNumber);
         response.send("PDF creation successful!");
     } catch (error) {
         response.status(500).json({ error: "Error creating the PDF." });
