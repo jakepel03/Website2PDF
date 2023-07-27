@@ -9,12 +9,40 @@ function addUrlBox() {
         "                        <a href=\"#\">Download</a>\n" +
         "                    </div>"
 }
+
+function convertToPDF() {
+
+    let PDFcounter = 1;
+    const allUrls = document.querySelectorAll('.url-element');
+    allUrls.forEach(async function (singleUrl) {
+        const url = singleUrl.querySelector('.url-textbox').value.trim();
+        try {
+            const response = await fetch('/convertToPDF', {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify({ url })
+            });
+            if (response.ok) {
+                console.log("Uploading URL " + PDFcounter +  " to server successful");
+                PDFcounter++;
+            } else {
+                alert('Error when converting HTML to PDF.');
+            }
+        } catch (error) {
+            alert('Error connecting to server:' + error);
+        }
+    })
+}
 document.addEventListener('DOMContentLoaded', function () {
     addUrlButton.addEventListener("click", addUrlBox);
     /* addUrlBox without () because it is a callback, otherwise
     addUrlBox will be executed immediately when the event listener is being set up,
     rather than when the button is clicked.
      */
+
+    extractButton.addEventListener("click", convertToPDF)
 
 
 })
