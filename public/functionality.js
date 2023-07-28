@@ -13,7 +13,7 @@ function addUrlBox() {
     const newURLElement = document.createElement('div');
     newURLElement.className = 'url-element';
     newURLElement.innerHTML = '<input type="text" class="url-textbox">\n' +
-        '                                <a href="#">Download</a>';
+        '                                <a href="#" hidden class="download-button">Download</a>';
     urlList.append(newURLElement);
 }
 async function convertToPDF() {
@@ -31,17 +31,22 @@ async function convertToPDF() {
                 },
                 body: JSON.stringify({ url, PDFcounter })
             });
+
             if (response.ok) {
                 console.log("Uploading URL " + PDFcounter +  " to server successful");
+                const downloadURL = singleUrl.querySelector('.download-button');
+                // downloadURL.style.visibility = 'visible'; // not working because hidden is a property, it would work if hidden was set with visibility = 'hidden'
+                downloadURL.removeAttribute('hidden');
                 PDFcounter++;
             } else {
-                alert('Error when converting HTML to PDF.');
+                console.log('Error when converting HTML to PDF.');
             }
         } catch (error) {
-            alert('Error connecting to server:' + error);
+            console.log('Error connecting to server:' + error);
         }
     }
 }
+
 document.addEventListener('DOMContentLoaded', function () {
     addUrlButton.addEventListener("click", addUrlBox);
     /* addUrlBox without () because it is a callback, otherwise

@@ -52,6 +52,8 @@ To get started with the PDF Extraction website, follow these steps:
 - Enable downloading PDF files from server
 - Enable auto and (manual) deleting pdf files from server
 - Improve layout, fix visual problems
+- Resolve issues with wrong user input
+- Implement loading screen (when websites are getting converted to PDFs, until file is ready to download)
 
 NOTE: Implementation of functionalities is still in progress, so there might be some issues using the website at the moment.
 
