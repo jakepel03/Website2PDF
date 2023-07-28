@@ -4,12 +4,18 @@ const mergeButton = document.querySelector('.merge-button');
 const urlList = document.querySelector('.url-list');
 
 function addUrlBox() {
+    /* Not ok because it re-Sparses and recreates the entire content inside urlList, text content in previous textfield gets deleted
     urlList.innerHTML += "<div class=\"url-element\">\n" +
         "                        <input type=\"text\" class=\"url-textbox\">\n" +
         "                        <a href=\"#\">Download</a>\n" +
         "                    </div>"
+        */
+    const newURLElement = document.createElement('div');
+    newURLElement.className = 'url-element';
+    newURLElement.innerHTML = '<input type="text" class="url-textbox">\n' +
+        '                                <a href="#">Download</a>';
+    urlList.append(newURLElement);
 }
-
 async function convertToPDF() {
     let PDFcounter = 1;
     const allUrls = document.querySelectorAll('.url-element');
@@ -43,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
     rather than when the button is clicked.
      */
 
-    extractButton.addEventListener("click", convertToPDF)
+    extractButton.addEventListener("click", convertToPDF);
 
 
 })
