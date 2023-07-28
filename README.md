@@ -54,6 +54,7 @@ To get started with the PDF Extraction website, follow these steps:
 - Improve layout, fix visual problems
 - Resolve issues with wrong user input
 - Implement loading screen (when websites are getting converted to PDFs, until file is ready to download)
+- If adding another URL after the other URLs were already extracted, all of the files should be extracted again due to possible changes on the websites (+ download button should not be visible, implemented loading screen)
 
 NOTE: Implementation of functionalities is still in progress, so there might be some issues using the website at the moment.
 
