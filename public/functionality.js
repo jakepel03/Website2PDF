@@ -4,7 +4,7 @@ const mergeButton = document.querySelector('.merge-button');
 const urlList = document.querySelector('.url-list');
 
 function addUrlBox() {
-    /* Not ok because it re-Sparses and recreates the entire content inside urlList, text content in previous textfield gets deleted
+    /* Not ok because it re-parses and recreates the entire content inside urlList, text content in previous textfield gets deleted
     urlList.innerHTML += "<div class=\"url-element\">\n" +
         "                        <input type=\"text\" class=\"url-textbox\">\n" +
         "                        <a href=\"#\">Download</a>\n" +
@@ -13,7 +13,7 @@ function addUrlBox() {
     const newURLElement = document.createElement('div');
     newURLElement.className = 'url-element';
     newURLElement.innerHTML = '<input type="text" class="url-textbox">\n' +
-        '                                <a href="#" hidden class="download-button">Download</a>';
+        '                                <a href="#" hidden class="download-button" data-pdf-index="">Download</a>';
     urlList.append(newURLElement);
 }
 async function convertToPDF() {
@@ -35,8 +35,8 @@ async function convertToPDF() {
             if (response.ok) {
                 console.log("Uploading URL " + PDFcounter +  " to server successful");
                 const downloadURL = singleUrl.querySelector('.download-button');
-                // downloadURL.style.visibility = 'visible'; // not working because hidden is a property, it would work if hidden was set with visibility = 'hidden'
                 downloadURL.removeAttribute('hidden');
+                downloadURL.dataset.pdfIndex = PDFcounter;
                 PDFcounter++;
             } else {
                 console.log('Error when converting HTML to PDF.');
@@ -45,7 +45,39 @@ async function convertToPDF() {
             console.log('Error connecting to server:' + error);
         }
     }
+
+    // only after ALL of the url elements have been made, select them (otherwise it will select only first)
+    const downloadButtons = document.querySelectorAll('.download-button');
+    downloadButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            const currIndex = button.dataset.pdfIndex;
+            downloadPDF(currIndex);
+        });
+    });
 }
+
+
+async function downloadPDF(currIndex) {
+    try {
+        const response = await fetch(`/download?currIndex=${currIndex}`);
+        if (!response.ok) {
+            throw new Error("File download failed.");
+        }
+
+        const blob = await response.blob();
+        const url = URL.createObjectURL(blob);
+
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `file${currIndex}.pdf`;
+        a.click();
+
+        URL.revokeObjectURL(url);
+    } catch (error) {
+        console.log("Error downloading file:", error);
+    }
+}
+
 
 document.addEventListener('DOMContentLoaded', function () {
     addUrlButton.addEventListener("click", addUrlBox);
@@ -55,6 +87,4 @@ document.addEventListener('DOMContentLoaded', function () {
      */
 
     extractButton.addEventListener("click", convertToPDF);
-
-
 })
