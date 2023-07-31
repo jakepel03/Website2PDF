@@ -34,16 +34,14 @@ async function createPDF(url, PDFNumber) {
 
 function clearCache() {
     fs.readdir(cachePath, (error, files) => {
-        if (error) {
-            throw error;
-        }
-
-        for (const file of files) {
-            fs.unlink(path.join(cachePath, file), (error) => {
-                if (error) {
-                    throw error;
-                }
-            })
+        if (!error) {
+            for (const file of files) {
+                fs.unlink(path.join(cachePath, file), (error) => {
+                    if (error) {
+                        throw error;
+                    }
+                })
+            }
         }
     })
 }
