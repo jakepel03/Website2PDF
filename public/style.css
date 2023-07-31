@@ -7,11 +7,15 @@ body {
     margin: 0;
     height: 100%;
     font-family: 'Handjet', cursive;
-    font-size: 13px;
+    font-size: 16px;
 }
 
 h1, h2 {
     font-weight: bold;
+}
+
+h1 {
+    font-size: 1.4rem;
 }
 
 h2 {
@@ -83,8 +87,35 @@ a:hover {
     padding-bottom: 4px;
 }
 
+.url-textbox {
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-right: 10px;
+    border-radius: 5px;
+    border-width: 1px;
+    width: 70%;
+    height: 1.4rem;
+}
+
+.url-textbox:focus {
+    outline-color: black;
+}
+
+.download-button {
+    font-size: 0.9rem;
+}
+
 .add-new-url-button {
-    flex-grow: 0;
+    margin-top: 5px;
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 10px;
+
+}
+
+.add-new-url-button:hover {
+    color: white;
+    background: #262626;
 }
 
 .extract-pdfs-button-container,
@@ -93,8 +124,62 @@ a:hover {
     text-align: center;
 }
 
-@media screen and (min-width: 480px) {
+.extract-button, .merge-button {
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 8px;
+    font-weight: bold;
+}
+
+.extract-button:hover, .merge-button:hover {
+    color: white;
+    background: #262626;
+}
+
+.footer {
+    width: 100%;
+    padding: 5px;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    font-family: Calibri;
+    font-size: 0.9rem;
+}
+
+
+@media screen and (min-width: 560px) and (min-height: 600px){
     body {
         font-size: 20px;
     }
+    h1 {
+        font-size: 2rem;
+    }
+    h2 {
+        font-size: 1.4rem;
+    }
+    a {
+        font-size: 0.6em;
+    }
+    .url-textbox {
+        width: 50%;
+    }
 }
+@media screen and (min-width: 1000px) and (min-height: 600px){
+    body {
+        font-size: 30px;
+    }
+    h1 {
+        font-size: 2rem;
+    }
+    h2 {
+        font-size: 1.4rem;
+    }
+    a {
+        font-size: 0.6em;
+    }
+    .url-textbox {
+        width: 35%;
+    }
+}
+
+
