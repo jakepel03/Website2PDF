@@ -77,14 +77,13 @@ async function downloadPDF(currIndex) {
         console.log("Error downloading file:", error);
     }
 }
-
-
 document.addEventListener('DOMContentLoaded', function () {
+
     addUrlButton.addEventListener("click", addUrlBox);
     /* addUrlBox without () because it is a callback, otherwise
     addUrlBox will be executed immediately when the event listener is being set up,
     rather than when the button is clicked.
      */
-
+    
     extractButton.addEventListener("click", convertToPDF);
 })

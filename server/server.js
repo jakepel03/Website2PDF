@@ -1,5 +1,9 @@
 const express = require('express');
 const puppeteer = require('puppeteer');
+const fs = require('fs');
+const path = require('path');
+
+const cachePath = 'server/pdfs';
 
 const server = express();
 server.use(express.static("public"));
@@ -28,6 +32,22 @@ async function createPDF(url, PDFNumber) {
     }
 }
 
+function clearCache() {
+    fs.readdir(cachePath, (error, files) => {
+        if (error) {
+            throw error;
+        }
+
+        for (const file of files) {
+            fs.unlink(path.join(cachePath, file), (error) => {
+                if (error) {
+                    throw error;
+                }
+            })
+        }
+    })
+}
+
 server.post("/convertToPDF", async (request, response) => {
     const url = request.body.url;
     const PDFNumber = request.body.PDFcounter;
@@ -53,5 +73,6 @@ server.get('/download', function (request, response) {
 
 const port = 3000;
 server.listen(port, () => {
+    clearCache(); // deleting previous files in pdf folder
     console.log("Server is running on port " + port);
 });
