@@ -19,11 +19,11 @@ h1 {
 }
 
 h2 {
-    font-size: 1em;
+    font-size: 1rem;
 }
 
 p {
-    margin-bottom: 5px;
+    font-size: 0.8rem;
 }
 
 a {
@@ -38,6 +38,8 @@ a:hover {
     width: 100%;
     height: 100vh;
     display: flex;
+    flex-direction: column;
+    overflow: hidden;
     background: rgba(234, 233, 233, 0.95);
 }
 
@@ -139,8 +141,6 @@ a:hover {
 .footer {
     width: 100%;
     padding: 5px;
-    position: absolute;
-    bottom: 0;
     text-align: center;
     font-family: Calibri;
     font-size: 0.9rem;
@@ -157,8 +157,8 @@ a:hover {
     h2 {
         font-size: 1.4rem;
     }
-    a {
-        font-size: 0.6em;
+    .download-button {
+        font-size: 1rem;
     }
     .url-textbox {
         width: 50%;
@@ -174,11 +174,14 @@ a:hover {
     h2 {
         font-size: 1.4rem;
     }
-    a {
-        font-size: 0.6em;
+    .download-button {
+        font-size: 1rem;
     }
     .url-textbox {
         width: 35%;
+    }
+    .footer {
+        font-size: 1.1rem;
     }
 }
 
