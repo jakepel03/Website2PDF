@@ -3,7 +3,7 @@ const puppeteer = require('puppeteer');
 const fs = require('fs');
 const path = require('path');
 
-const cachePath = 'server/pdfs';
+const cachePath = './server/pdfs';
 
 const server = express();
 server.use(express.static("public"));
@@ -19,11 +19,12 @@ async function createPDF(url, PDFNumber) {
         await page.goto(url, { waitUntil: "networkidle0" });
         await page.emulateMediaType('screen');
 
+
         const pdf = await page.pdf({
             path: `server/pdfs/file${PDFNumber}.pdf`,
             printBackground: true,
             format: 'A4',
-            margin: { top: '100px', right: '50px', bottom: '100px', left: '50px' }
+            margin: { top: '100px', right: '50px', bottom: '100px', left: '50px' },
         });
         await browser.close();
 

@@ -16,7 +16,20 @@ function addUrlBox() {
         '                                <a href="#" hidden class="download-button" data-pdf-index="">Download</a>';
     urlList.append(newURLElement);
 }
+
+function deleteBlank() {
+    const allUrls = document.querySelectorAll('.url-element');
+
+    for (const singleUrl of allUrls) {
+        const url = singleUrl.querySelector('.url-textbox').value.trim();
+        if (url === "") {
+            singleUrl.remove();
+            continue;
+        }
+    }
+}
 async function convertToPDF() {
+    deleteBlank(); // deletes blank .url-list elements
     let PDFcounter = 1;
     const allUrls = document.querySelectorAll('.url-element');
 

@@ -60,5 +60,5 @@ To get started with the PDF Extraction website, follow these steps:
   
 NOTE: Implementation of functionalities is still in progress, so there might be some issues using the website at the moment.
 
-
+NOTE: Branch host fixes problems with hosting the website. Cache directory is now in repo 
 
