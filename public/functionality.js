@@ -12,7 +12,7 @@ function addUrlBox() {
         */
     const newURLElement = document.createElement('div');
     newURLElement.className = 'url-element';
-    newURLElement.innerHTML = '<input type="text" class="url-textbox">\n' +
+    newURLElement.innerHTML = '<input type="text" class="url-textbox">\n' + '<div class="loader"></div>' +
         '                                <a href="#" hidden class="download-button" data-pdf-index="">Download</a>';
     urlList.append(newURLElement);
 }
@@ -35,6 +35,8 @@ async function convertToPDF() {
 
     for (const singleUrl of allUrls) {
         const url = singleUrl.querySelector('.url-textbox').value.trim();
+        const loader = singleUrl.querySelector('.loader');
+        loader.style.display= 'inline-block';
 
         try {
             const response = await fetch('/convertToPDF', {
@@ -47,6 +49,8 @@ async function convertToPDF() {
 
             if (response.ok) {
                 console.log("Uploading URL " + PDFcounter +  " to server successful");
+                loader.style.display = 'none';
+
                 const downloadURL = singleUrl.querySelector('.download-button');
                 downloadURL.removeAttribute('hidden');
                 downloadURL.dataset.pdfIndex = PDFcounter;
