@@ -55,6 +55,7 @@ To get started with the PDF Extraction website, follow these steps:
 - Implement loader (DONE)
 - Improve layout, fix visual problems
 - Resolve issues with wrong user input
+- Optimize CSS code
 
 
 NOTE: Implementation of functionalities is still in progress, so there might be some issues using the website at the moment.

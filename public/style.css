@@ -6,7 +6,7 @@ body {
     padding: 0;
     margin: 0;
     height: 100%;
-    font-family: 'Handjet', cursive;
+    font-family: 'Montserrat', sans-serif;
     font-size: 16px;
 }
 
@@ -19,7 +19,7 @@ h1 {
 }
 
 h2 {
-    font-size: 1rem;
+    font-size: 0.8rem;
 }
 
 p {
@@ -40,17 +40,19 @@ a:hover {
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    background: rgba(234, 233, 233, 0.95);
+    /*background: rgba(234, 233, 233, 0.95);*/
+    color: #FCFFFF;
+    background: #141519;
 }
 
 .content {
     width: 80%;
-    height: 85%;
+    height: 80%;
     margin: auto;
     padding: 10px 0;
-    border: 2px solid #000000;
-    background: white;
-    border-radius: 10px;
+    /*background: white;*/
+    background: #1F2630;
+    border-radius: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -87,7 +89,7 @@ a:hover {
 }
 
 .url-element {
-    padding-bottom: 4px;
+    padding-bottom: 6px;
     display: flex;
     flex-direction: row;
 }
@@ -103,12 +105,16 @@ a:hover {
 }
 
 .url-textbox:focus {
-    outline-color: black;
+    outline: none;
 }
 
 .download-button {
-    font-size: 0.9rem;
+    font-size: 0.6rem;
     align-self: center;
+    color: #FCFFFF;
+    background: #252E37;
+    border-radius: 15px;
+    padding: 5px 10px;
 }
 
 .loader {
@@ -129,15 +135,14 @@ a:hover {
 
 .add-new-url-button {
     margin-top: 5px;
-    padding: 5px;
-    border: 1px solid black;
+    padding: 5px 10px;
     border-radius: 10px;
-
+    border: none;
 }
 
 .add-new-url-button:hover {
     color: white;
-    background: #262626;
+    background: #5d5d5d;
 }
 
 .extract-pdfs-button-container,
@@ -147,23 +152,31 @@ a:hover {
 }
 
 .extract-button, .merge-button {
-    border: 1px solid black;
-    border-radius: 15px;
-    padding: 8px;
-    font-weight: bold;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 15px;
+    background: #FC7613;
+    color: #FCFFFF;
 }
 
 .extract-button:hover, .merge-button:hover {
     color: white;
-    background: #262626;
+    background: rgba(252, 118, 19, 0.58);
+}
+
+button {
+    font-weight: 400;
 }
 
 .footer {
     width: 100%;
     padding: 5px;
     text-align: center;
-    font-family: Calibri;
     font-size: 0.9rem;
+}
+
+.linkedin {
+    color: #FCFFFF;
 }
 
 
@@ -175,10 +188,10 @@ a:hover {
         font-size: 2rem;
     }
     h2 {
-        font-size: 1.4rem;
+        font-size: 1.2rem;
     }
     .download-button {
-        font-size: 1rem;
+        font-size: 0.8rem;
     }
     .url-textbox {
         width: 50%;
@@ -192,10 +205,10 @@ a:hover {
         font-size: 2rem;
     }
     h2 {
-        font-size: 1.4rem;
+        font-size: 1.2rem;
     }
     .download-button {
-        font-size: 1rem;
+        font-size: 0.8rem;
     }
     .url-textbox {
         width: 35%;
