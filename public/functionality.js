@@ -29,13 +29,25 @@ function deleteBlank() {
     }
 }
 async function convertToPDF() {
-    deleteBlank(); // deletes blank .url-list elements
+    // deleting possible blank textboxes
+    deleteBlank();
+
     let PDFcounter = 1;
+
     const allUrls = document.querySelectorAll('.url-element');
+
+    // removing possible download buttons from previous download session
+    const allDownloadBtns = document.querySelectorAll('.download-button');
+    allDownloadBtns.forEach(button => {
+        button.hidden = true;
+    })
 
     for (const singleUrl of allUrls) {
         const url = singleUrl.querySelector('.url-textbox').value.trim();
         const loader = singleUrl.querySelector('.loader');
+        const downloadURL = singleUrl.querySelector('.download-button');
+
+        // loader visible while processing PDF
         loader.style.display= 'inline-block';
 
         try {
@@ -49,10 +61,13 @@ async function convertToPDF() {
 
             if (response.ok) {
                 console.log("Uploading URL " + PDFcounter +  " to server successful");
+
+                // loader removed when PDF successfuly processed
                 loader.style.display = 'none';
 
-                const downloadURL = singleUrl.querySelector('.download-button');
+                // download link available
                 downloadURL.removeAttribute('hidden');
+
                 downloadURL.dataset.pdfIndex = PDFcounter;
                 PDFcounter++;
             } else {
