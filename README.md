@@ -53,10 +53,10 @@ To get started with the PDF Extraction website, follow these steps:
 - Enable auto deleting pdf files from server (DONE, PDF cache deleted on every reload of the server)
 - Delete URL box if user leaves it empty (DONE)
 - Implement loader (DONE)
-- Improve layout, fix visual problems
+- Improve layout, fix visual problems (DONE)
+- Optimize CSS code (DONE)
 - Resolve issues with wrong user input
-- Optimize CSS code
-
+- Implement merging
 
 NOTE: Implementation of functionalities is still in progress, so there might be some issues using the website at the moment.
 
